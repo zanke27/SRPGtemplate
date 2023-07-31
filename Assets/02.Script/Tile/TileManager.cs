@@ -32,7 +32,7 @@ public class TileManager : MonoBehaviour
         }
     }
 
-    #region Á¤·Ä
+    #region ì •ë ¬
 
     private GameObject parentObj;
     private GameObject[] childrenObjArr;
