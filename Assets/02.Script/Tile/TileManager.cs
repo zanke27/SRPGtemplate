@@ -4,24 +4,32 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class CellManager : MonoBehaviour
+public class TileManager : MonoBehaviour
 {
     public Vector3 leftBottomLocation = new Vector3 (0, 0, 0);
-    public GameObject[,] cellArr;
+    public GameObject[,] tileArr;
     public int rows = 5;
     public int columns = 5;
 
     private void Awake()
     {
-        cellArr = new GameObject[columns + 1, rows + 1];
+        tileArr = new GameObject[columns + 1, rows + 1];
     }
 
-    [ContextMenu("SetCell")]
-    public void SetCell()
+    [ContextMenu("SetTile")]
+    public void SetTile()
     {
-        for (int i = 0; i < columns; i++)
-            for (int j = 0; j < rows; j++)
-                cellArr[i, j] = transform.GetChild(i*columns + j).gameObject.GetComponent<GameObject>();
+        //tileArr = new GameObject[columns + 1, rows + 1];
+
+        foreach (Transform child in transform)
+        {
+            string[] splitXY = child.name.Split(' ');
+
+            int x = int.Parse(splitXY[0]);
+            int y = int.Parse(splitXY[1]);
+
+            tileArr[x, y] = child.GetComponent<GameObject>();
+        }
     }
 
     #region Á¤·Ä

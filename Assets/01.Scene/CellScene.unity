@@ -241,7 +241,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86cd6560ab63de14da9c6914779b3cba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cellPos: {x: 3, y: 2}
+  tilePos: {x: 0, y: 0}
 --- !u!1 &59191984
 GameObject:
   m_ObjectHideFlags: 0
@@ -360,7 +360,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86cd6560ab63de14da9c6914779b3cba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cellPos: {x: 4, y: 1}
+  tilePos: {x: 0, y: 0}
 --- !u!1 &215583330
 GameObject:
   m_ObjectHideFlags: 0
@@ -479,7 +479,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86cd6560ab63de14da9c6914779b3cba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cellPos: {x: 4, y: 4}
+  tilePos: {x: 0, y: 0}
 --- !u!1 &258791552
 GameObject:
   m_ObjectHideFlags: 0
@@ -598,7 +598,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86cd6560ab63de14da9c6914779b3cba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cellPos: {x: 3, y: 0}
+  tilePos: {x: 0, y: 0}
 --- !u!1 &331706755
 GameObject:
   m_ObjectHideFlags: 0
@@ -717,7 +717,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86cd6560ab63de14da9c6914779b3cba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cellPos: {x: 2, y: 0}
+  tilePos: {x: 0, y: 0}
 --- !u!1 &371471821
 GameObject:
   m_ObjectHideFlags: 0
@@ -836,7 +836,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86cd6560ab63de14da9c6914779b3cba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cellPos: {x: 4, y: 3}
+  tilePos: {x: 0, y: 0}
 --- !u!1 &533322366
 GameObject:
   m_ObjectHideFlags: 0
@@ -955,7 +955,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86cd6560ab63de14da9c6914779b3cba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cellPos: {x: 1, y: 4}
+  tilePos: {x: 0, y: 0}
 --- !u!1 &603113150
 GameObject:
   m_ObjectHideFlags: 0
@@ -1074,7 +1074,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86cd6560ab63de14da9c6914779b3cba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cellPos: {x: 3, y: 3}
+  tilePos: {x: 0, y: 0}
 --- !u!1 &690626785
 GameObject:
   m_ObjectHideFlags: 0
@@ -1193,7 +1193,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86cd6560ab63de14da9c6914779b3cba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cellPos: {x: 1, y: 2}
+  tilePos: {x: 0, y: 0}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -1406,7 +1406,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86cd6560ab63de14da9c6914779b3cba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cellPos: {x: 0, y: 4}
+  tilePos: {x: 0, y: 0}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -1724,7 +1724,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86cd6560ab63de14da9c6914779b3cba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cellPos: {x: 0, y: 2}
+  tilePos: {x: 0, y: 0}
 --- !u!1 &1116623791
 GameObject:
   m_ObjectHideFlags: 0
@@ -1843,7 +1843,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86cd6560ab63de14da9c6914779b3cba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cellPos: {x: 1, y: 0}
+  tilePos: {x: 0, y: 0}
 --- !u!1 &1155391773
 GameObject:
   m_ObjectHideFlags: 0
@@ -1962,7 +1962,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86cd6560ab63de14da9c6914779b3cba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cellPos: {x: 2, y: 3}
+  tilePos: {x: 0, y: 0}
 --- !u!1 &1386611153
 GameObject:
   m_ObjectHideFlags: 0
@@ -2081,7 +2081,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86cd6560ab63de14da9c6914779b3cba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cellPos: {x: 0, y: 0}
+  tilePos: {x: 0, y: 0}
 --- !u!1 &1387753274
 GameObject:
   m_ObjectHideFlags: 0
@@ -2200,7 +2200,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86cd6560ab63de14da9c6914779b3cba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cellPos: {x: 2, y: 1}
+  tilePos: {x: 0, y: 0}
 --- !u!1 &1420244605
 GameObject:
   m_ObjectHideFlags: 0
@@ -2319,7 +2319,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86cd6560ab63de14da9c6914779b3cba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cellPos: {x: 1, y: 3}
+  tilePos: {x: 0, y: 0}
 --- !u!1 &1488773544
 GameObject:
   m_ObjectHideFlags: 0
@@ -2438,7 +2438,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86cd6560ab63de14da9c6914779b3cba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cellPos: {x: 4, y: 2}
+  tilePos: {x: 0, y: 0}
 --- !u!1 &1594083711
 GameObject:
   m_ObjectHideFlags: 0
@@ -2557,7 +2557,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86cd6560ab63de14da9c6914779b3cba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cellPos: {x: 4, y: 0}
+  tilePos: {x: 0, y: 0}
 --- !u!1 &1645501928
 GameObject:
   m_ObjectHideFlags: 0
@@ -2676,7 +2676,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86cd6560ab63de14da9c6914779b3cba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cellPos: {x: 1, y: 1}
+  tilePos: {x: 0, y: 0}
 --- !u!1 &1737946426
 GameObject:
   m_ObjectHideFlags: 0
@@ -2795,7 +2795,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86cd6560ab63de14da9c6914779b3cba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cellPos: {x: 3, y: 4}
+  tilePos: {x: 0, y: 0}
 --- !u!1 &1771162406
 GameObject:
   m_ObjectHideFlags: 0
@@ -2914,7 +2914,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86cd6560ab63de14da9c6914779b3cba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cellPos: {x: 2, y: 2}
+  tilePos: {x: 0, y: 0}
 --- !u!1 &1782993560
 GameObject:
   m_ObjectHideFlags: 0
@@ -3033,7 +3033,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86cd6560ab63de14da9c6914779b3cba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cellPos: {x: 3, y: 1}
+  tilePos: {x: 0, y: 0}
 --- !u!1 &1798308489
 GameObject:
   m_ObjectHideFlags: 0
@@ -3152,7 +3152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86cd6560ab63de14da9c6914779b3cba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cellPos: {x: 0, y: 1}
+  tilePos: {x: 0, y: 0}
 --- !u!1 &1813906803
 GameObject:
   m_ObjectHideFlags: 0
@@ -3271,7 +3271,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86cd6560ab63de14da9c6914779b3cba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cellPos: {x: 2, y: 4}
+  tilePos: {x: 0, y: 0}
 --- !u!1 &1846785784
 GameObject:
   m_ObjectHideFlags: 0
@@ -3390,7 +3390,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86cd6560ab63de14da9c6914779b3cba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cellPos: {x: 0, y: 3}
+  tilePos: {x: 0, y: 0}
 --- !u!1 &1971057416
 GameObject:
   m_ObjectHideFlags: 0
@@ -3402,7 +3402,7 @@ GameObject:
   - component: {fileID: 1971057417}
   - component: {fileID: 1971057418}
   m_Layer: 0
-  m_Name: Cells
+  m_Name: Tiles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3460,29 +3460,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e49dbc112e6a77f44b9d7f5ef03464c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cells:
-  - {fileID: 215583335}
-  - {fileID: 371471826}
-  - {fileID: 1488773549}
-  - {fileID: 59191989}
-  - {fileID: 1594083716}
-  - {fileID: 1737946431}
-  - {fileID: 603113155}
-  - {fileID: 11971258}
-  - {fileID: 1782993565}
-  - {fileID: 258791557}
-  - {fileID: 1813906808}
-  - {fileID: 1155391778}
-  - {fileID: 1771162411}
-  - {fileID: 1387753279}
-  - {fileID: 331706760}
-  - {fileID: 533322371}
-  - {fileID: 1420244610}
-  - {fileID: 690626790}
-  - {fileID: 1645501933}
-  - {fileID: 1116623796}
-  - {fileID: 731942076}
-  - {fileID: 1846785789}
-  - {fileID: 1098469209}
-  - {fileID: 1798308494}
-  - {fileID: 1386611158}
+  leftBottomLocation: {x: 0, y: 0, z: 0}
+  rows: 5
+  columns: 5

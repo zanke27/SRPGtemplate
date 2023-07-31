@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Cell : MonoBehaviour
+public class Tile : MonoBehaviour
 {
-    [SerializeField] private Vector2 cellPos;
+    [SerializeField] private Vector2 tilePos;
 
     private void Awake()
     {
@@ -14,14 +14,14 @@ public class Cell : MonoBehaviour
     [ContextMenu("SetPosition")]
     public void SetPosition()
     {
-        cellPos.x = transform.position.x;
-        cellPos.y = transform.position.z;
+        tilePos.x = transform.position.x;
+        tilePos.y = transform.position.z;
     }
 
     [ContextMenu("SetName")]
     public void SetName()
     {
         gameObject.name = "";
-        gameObject.name = $"{cellPos.x} {cellPos.y}";
+        gameObject.name = $"{tilePos.x} {tilePos.y}";
     }
 }
