@@ -6,9 +6,17 @@ public class Tile : MonoBehaviour
 {
     [SerializeField] private Vector2 tilePos;
 
+    public bool IsCantMoveTile;
+    public Tile ParentTile;
+    public int moveCost;
+
+    public int x, y, G, H;
+    public int F { get { return G + H; } }
+
     private void Awake()
     {
         SetPosition();
+        SetName();
     }
 
     [ContextMenu("SetPosition")]
