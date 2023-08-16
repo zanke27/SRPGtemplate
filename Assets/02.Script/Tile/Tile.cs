@@ -24,6 +24,8 @@ public class Tile : MonoBehaviour
     {
         tilePos.x = transform.position.x;
         tilePos.y = transform.position.z;
+        x = (int)tilePos.x;
+        y = (int)tilePos.y;
     }
 
     [ContextMenu("SetName")]

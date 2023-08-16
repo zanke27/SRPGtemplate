@@ -31,15 +31,17 @@ public class TileManager : MonoBehaviour
         SetTile();
     }
 
-    public void AStar(Tile startT, Tile endT)
+    public void AStar(int startX, int startY, int endX, int endY)
     {
         // StartTile이랑 EndTile은 이렇게 가져오는 것 말고 x, y 위치 받아서 tileArr에서 빼오는 것도 좋을 듯?
-        startTile = startT;
-        endTile = endT;
+        startTile = tileArr[startX, startY];
+        endTile = tileArr[endX, endY];
 
-        openTileList = new List<Tile>() { startTile };
+        openTileList = new List<Tile>();
         closedTileList = new List<Tile>();
         completeTileList = new List<Tile>();
+
+        openTileList.Add(startTile);
 
         while(openTileList.Count > 0) 
         {
