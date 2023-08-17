@@ -8,5 +8,17 @@ using UnityEngine;
 
 public class Unit : MonoBehaviour
 {
+    #region 데이터
 
+    // 체력 / 공격 데미지 / 이동 거리
+    private int hp = 100;
+    private int damage = 10;
+    private int moveDistance = 5;
+
+    #endregion
+
+    public void Move()
+    {
+        
+    }
 }

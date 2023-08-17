@@ -96,7 +96,7 @@ public class TileManager : MonoBehaviour
                 // 이미 처리가 끝난 닫힌 타일 리스트에 현재 타일이 있지 않다면
                 if (closedTileList.Contains(tileArr[checkX, checkY]) == false)
                 {
-                    // 인접한 타일로 추가하고, moveCost(G) 설정
+                    // 인접한 타일(본인)로 추가하고, moveCost(G) 설정
                     Tile neighborTile = tileArr[checkX, checkY];
                     int moveCost = currentTile.G + currentTile.moveCost;
 
@@ -109,6 +109,65 @@ public class TileManager : MonoBehaviour
                         neighborTile.ParentTile = currentTile;
 
                         openTileList.Add(neighborTile);
+                    }
+                }
+            }
+        }
+    }
+
+    // 재귀 이용해서 작동 시켜보자
+    public void GetMoveableTile(int startX, int startY, int moveDistance)
+    {
+        startTile = tileArr[startX, startY];
+
+        openTileList = new List<Tile>();
+        closedTileList = new List<Tile>();
+        //completeTileList = new List<Tile>();
+
+        openTileList.Add(startTile);
+
+        while (openTileList.Count > 0)
+        {
+            currentTile = openTileList[0];
+
+            //for (int i = 1; i < openTileList.Count; i++)
+            //    if (openTileList[i].F <= currentTile.F && openTileList[i].H < currentTile.H)
+            //        currentTile = openTileList[i];
+
+            openTileList.Remove(currentTile);
+            closedTileList.Add(currentTile);
+
+            AddOpenListToMoveable(currentTile.x, currentTile.y + 1, moveDistance); // 상
+            AddOpenListToMoveable(currentTile.x, currentTile.y - 1, moveDistance); // 하
+            AddOpenListToMoveable(currentTile.x - 1, currentTile.y, moveDistance); // 좌
+            AddOpenListToMoveable(currentTile.x + 1, currentTile.y, moveDistance); // 우
+                                                             // 를 리스트에 넣어주기
+        }
+    }
+
+    private void AddOpenListToMoveable(int checkX, int checkY, int moveDistance)
+    {
+        // 상하 좌우 범위를 벗어나지 않고
+        if (checkX >= 0 && checkX < arrX && checkY >= 0 && checkY < arrY)
+        {
+            // 이동할 수 없는 타일이 아니며
+            if (tileArr[checkX, checkY].IsCantMoveTile == false)
+            {
+                // 이미 처리가 끝난 닫힌 타일 리스트에 현재 타일이 있지 않다면
+                if (closedTileList.Contains(tileArr[checkX, checkY]) == false)
+                {
+                    // 오픈 리스트에 현재 타일에 없다면 (중복 방지용)
+                    if (openTileList.Contains(tileArr[checkX, checkY]) == false)
+                    {
+                        // 인접한 타일()
+                        Tile neighborTile = tileArr[checkX, checkY];
+                        int moveCost = currentTile.G + currentTile.moveCost;
+
+                        if (moveCost <= moveDistance)
+                        {
+                            neighborTile.G = moveCost;
+                            neighborTile.SelectTile();
+                        }
                     }
                 }
             }

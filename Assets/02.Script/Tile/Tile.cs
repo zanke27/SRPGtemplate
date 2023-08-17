@@ -2,10 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// 타일 상태를 보고 갈 수 있는 타일인지 판단하기 위해서
+public enum TileState
+{
+    None, // 타일에 아무도 없음
+    Have  // 타일에 누군가 있음
+}
+
 public class Tile : MonoBehaviour
 {
     [SerializeField] private Vector2 tilePos;
 
+    public TileState TileState;
     public bool IsCantMoveTile;
     public Tile ParentTile;
     public int moveCost;
@@ -13,10 +21,23 @@ public class Tile : MonoBehaviour
     public int x, y, G, H;
     public int F { get { return G + H; } }
 
+    // 움직일 수 있는 타일인가? (이동 범위 안쪽인가?)
+    private bool isSelectMove;
+
     private void Awake()
     {
         SetPosition();
         SetName();
+    }
+
+    public void SelectTile()
+    {
+        isSelectMove = true;
+    }
+
+    public void ReleaseTile()
+    {
+        isSelectMove = false;
     }
 
     [ContextMenu("SetPosition")]
