@@ -167,11 +167,20 @@ public class TileManager : MonoBehaviour
                         {
                             neighborTile.G = moveCost;
                             neighborTile.SelectTile();
+
+                            openTileList.Add(neighborTile);
                         }
                     }
                 }
             }
         }
+    }
+
+    [ContextMenu("Test")]
+    public void Test()
+    {
+        tileArr[2, 2].SelectTile();
+        GetMoveableTile(2, 2, 2);
     }
 
     public void SetTile()

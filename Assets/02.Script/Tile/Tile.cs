@@ -21,6 +21,8 @@ public class Tile : MonoBehaviour
     public int x, y, G, H;
     public int F { get { return G + H; } }
 
+    public Material redMat;
+
     // 움직일 수 있는 타일인가? (이동 범위 안쪽인가?)
     private bool isSelectMove;
 
@@ -32,6 +34,8 @@ public class Tile : MonoBehaviour
 
     public void SelectTile()
     {
+        MeshRenderer meshRen = GetComponent<MeshRenderer>();
+        meshRen.material = redMat;
         isSelectMove = true;
     }
 

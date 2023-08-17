@@ -242,6 +242,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilePos: {x: 0, y: 0}
+  TileState: 0
   IsCantMoveTile: 0
   ParentTile: {fileID: 0}
   moveCost: 1
@@ -249,6 +250,7 @@ MonoBehaviour:
   y: 0
   G: 0
   H: 0
+  redMat: {fileID: 2100000, guid: 04acaaf13bcb6144499ef2fdb14ad993, type: 2}
 --- !u!1 &59191984
 GameObject:
   m_ObjectHideFlags: 0
@@ -368,6 +370,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilePos: {x: 0, y: 0}
+  TileState: 0
   IsCantMoveTile: 0
   ParentTile: {fileID: 0}
   moveCost: 1
@@ -375,6 +378,7 @@ MonoBehaviour:
   y: 0
   G: 0
   H: 0
+  redMat: {fileID: 2100000, guid: 04acaaf13bcb6144499ef2fdb14ad993, type: 2}
 --- !u!1 &215583330
 GameObject:
   m_ObjectHideFlags: 0
@@ -494,6 +498,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilePos: {x: 0, y: 0}
+  TileState: 0
   IsCantMoveTile: 0
   ParentTile: {fileID: 0}
   moveCost: 1
@@ -501,6 +506,7 @@ MonoBehaviour:
   y: 0
   G: 0
   H: 0
+  redMat: {fileID: 2100000, guid: 04acaaf13bcb6144499ef2fdb14ad993, type: 2}
 --- !u!1 &258791552
 GameObject:
   m_ObjectHideFlags: 0
@@ -620,6 +626,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilePos: {x: 0, y: 0}
+  TileState: 0
   IsCantMoveTile: 0
   ParentTile: {fileID: 0}
   moveCost: 1
@@ -627,6 +634,7 @@ MonoBehaviour:
   y: 0
   G: 0
   H: 0
+  redMat: {fileID: 2100000, guid: 04acaaf13bcb6144499ef2fdb14ad993, type: 2}
 --- !u!1 &331706755
 GameObject:
   m_ObjectHideFlags: 0
@@ -746,6 +754,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilePos: {x: 0, y: 0}
+  TileState: 0
   IsCantMoveTile: 0
   ParentTile: {fileID: 0}
   moveCost: 1
@@ -753,6 +762,7 @@ MonoBehaviour:
   y: 0
   G: 0
   H: 0
+  redMat: {fileID: 2100000, guid: 04acaaf13bcb6144499ef2fdb14ad993, type: 2}
 --- !u!1 &371471821
 GameObject:
   m_ObjectHideFlags: 0
@@ -872,6 +882,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilePos: {x: 0, y: 0}
+  TileState: 0
   IsCantMoveTile: 0
   ParentTile: {fileID: 0}
   moveCost: 1
@@ -879,6 +890,7 @@ MonoBehaviour:
   y: 0
   G: 0
   H: 0
+  redMat: {fileID: 2100000, guid: 04acaaf13bcb6144499ef2fdb14ad993, type: 2}
 --- !u!1 &533322366
 GameObject:
   m_ObjectHideFlags: 0
@@ -998,6 +1010,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilePos: {x: 0, y: 0}
+  TileState: 0
   IsCantMoveTile: 0
   ParentTile: {fileID: 0}
   moveCost: 1
@@ -1005,6 +1018,7 @@ MonoBehaviour:
   y: 0
   G: 0
   H: 0
+  redMat: {fileID: 2100000, guid: 04acaaf13bcb6144499ef2fdb14ad993, type: 2}
 --- !u!1 &603113150
 GameObject:
   m_ObjectHideFlags: 0
@@ -1124,6 +1138,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilePos: {x: 0, y: 0}
+  TileState: 0
   IsCantMoveTile: 0
   ParentTile: {fileID: 0}
   moveCost: 1
@@ -1131,6 +1146,7 @@ MonoBehaviour:
   y: 0
   G: 0
   H: 0
+  redMat: {fileID: 2100000, guid: 04acaaf13bcb6144499ef2fdb14ad993, type: 2}
 --- !u!1 &690626785
 GameObject:
   m_ObjectHideFlags: 0
@@ -1250,6 +1266,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilePos: {x: 0, y: 0}
+  TileState: 0
   IsCantMoveTile: 0
   ParentTile: {fileID: 0}
   moveCost: 1
@@ -1257,6 +1274,7 @@ MonoBehaviour:
   y: 0
   G: 0
   H: 0
+  redMat: {fileID: 2100000, guid: 04acaaf13bcb6144499ef2fdb14ad993, type: 2}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -1470,6 +1488,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilePos: {x: 0, y: 0}
+  TileState: 0
   IsCantMoveTile: 0
   ParentTile: {fileID: 0}
   moveCost: 1
@@ -1477,6 +1496,7 @@ MonoBehaviour:
   y: 0
   G: 0
   H: 0
+  redMat: {fileID: 2100000, guid: 04acaaf13bcb6144499ef2fdb14ad993, type: 2}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -1795,6 +1815,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilePos: {x: 0, y: 0}
+  TileState: 0
   IsCantMoveTile: 0
   ParentTile: {fileID: 0}
   moveCost: 1
@@ -1802,6 +1823,7 @@ MonoBehaviour:
   y: 0
   G: 0
   H: 0
+  redMat: {fileID: 2100000, guid: 04acaaf13bcb6144499ef2fdb14ad993, type: 2}
 --- !u!1 &1116623791
 GameObject:
   m_ObjectHideFlags: 0
@@ -1921,6 +1943,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilePos: {x: 0, y: 0}
+  TileState: 0
   IsCantMoveTile: 0
   ParentTile: {fileID: 0}
   moveCost: 1
@@ -1928,6 +1951,7 @@ MonoBehaviour:
   y: 0
   G: 0
   H: 0
+  redMat: {fileID: 2100000, guid: 04acaaf13bcb6144499ef2fdb14ad993, type: 2}
 --- !u!1 &1155391773
 GameObject:
   m_ObjectHideFlags: 0
@@ -2047,6 +2071,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilePos: {x: 0, y: 0}
+  TileState: 0
   IsCantMoveTile: 0
   ParentTile: {fileID: 0}
   moveCost: 1
@@ -2054,6 +2079,7 @@ MonoBehaviour:
   y: 0
   G: 0
   H: 0
+  redMat: {fileID: 2100000, guid: 04acaaf13bcb6144499ef2fdb14ad993, type: 2}
 --- !u!1 &1386611153
 GameObject:
   m_ObjectHideFlags: 0
@@ -2173,6 +2199,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilePos: {x: 0, y: 0}
+  TileState: 0
   IsCantMoveTile: 0
   ParentTile: {fileID: 0}
   moveCost: 1
@@ -2180,6 +2207,7 @@ MonoBehaviour:
   y: 0
   G: 0
   H: 0
+  redMat: {fileID: 2100000, guid: 04acaaf13bcb6144499ef2fdb14ad993, type: 2}
 --- !u!1 &1387753274
 GameObject:
   m_ObjectHideFlags: 0
@@ -2299,6 +2327,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilePos: {x: 0, y: 0}
+  TileState: 0
   IsCantMoveTile: 0
   ParentTile: {fileID: 0}
   moveCost: 1
@@ -2306,6 +2335,7 @@ MonoBehaviour:
   y: 0
   G: 0
   H: 0
+  redMat: {fileID: 2100000, guid: 04acaaf13bcb6144499ef2fdb14ad993, type: 2}
 --- !u!1 &1420244605
 GameObject:
   m_ObjectHideFlags: 0
@@ -2425,6 +2455,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilePos: {x: 0, y: 0}
+  TileState: 0
   IsCantMoveTile: 0
   ParentTile: {fileID: 0}
   moveCost: 1
@@ -2432,6 +2463,7 @@ MonoBehaviour:
   y: 0
   G: 0
   H: 0
+  redMat: {fileID: 2100000, guid: 04acaaf13bcb6144499ef2fdb14ad993, type: 2}
 --- !u!1 &1488773544
 GameObject:
   m_ObjectHideFlags: 0
@@ -2551,6 +2583,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilePos: {x: 0, y: 0}
+  TileState: 0
   IsCantMoveTile: 0
   ParentTile: {fileID: 0}
   moveCost: 1
@@ -2558,6 +2591,7 @@ MonoBehaviour:
   y: 0
   G: 0
   H: 0
+  redMat: {fileID: 2100000, guid: 04acaaf13bcb6144499ef2fdb14ad993, type: 2}
 --- !u!1 &1594083711
 GameObject:
   m_ObjectHideFlags: 0
@@ -2677,6 +2711,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilePos: {x: 0, y: 0}
+  TileState: 0
   IsCantMoveTile: 0
   ParentTile: {fileID: 0}
   moveCost: 1
@@ -2684,6 +2719,7 @@ MonoBehaviour:
   y: 0
   G: 0
   H: 0
+  redMat: {fileID: 2100000, guid: 04acaaf13bcb6144499ef2fdb14ad993, type: 2}
 --- !u!1 &1645501928
 GameObject:
   m_ObjectHideFlags: 0
@@ -2803,6 +2839,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilePos: {x: 0, y: 0}
+  TileState: 0
   IsCantMoveTile: 0
   ParentTile: {fileID: 0}
   moveCost: 1
@@ -2810,6 +2847,7 @@ MonoBehaviour:
   y: 0
   G: 0
   H: 0
+  redMat: {fileID: 2100000, guid: 04acaaf13bcb6144499ef2fdb14ad993, type: 2}
 --- !u!1 &1737946426
 GameObject:
   m_ObjectHideFlags: 0
@@ -2929,6 +2967,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilePos: {x: 0, y: 0}
+  TileState: 0
   IsCantMoveTile: 0
   ParentTile: {fileID: 0}
   moveCost: 1
@@ -2936,6 +2975,7 @@ MonoBehaviour:
   y: 0
   G: 0
   H: 0
+  redMat: {fileID: 2100000, guid: 04acaaf13bcb6144499ef2fdb14ad993, type: 2}
 --- !u!1 &1771162406
 GameObject:
   m_ObjectHideFlags: 0
@@ -3055,6 +3095,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilePos: {x: 0, y: 0}
+  TileState: 0
   IsCantMoveTile: 0
   ParentTile: {fileID: 0}
   moveCost: 1
@@ -3062,6 +3103,7 @@ MonoBehaviour:
   y: 0
   G: 0
   H: 0
+  redMat: {fileID: 2100000, guid: 04acaaf13bcb6144499ef2fdb14ad993, type: 2}
 --- !u!1 &1782993560
 GameObject:
   m_ObjectHideFlags: 0
@@ -3181,6 +3223,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilePos: {x: 0, y: 0}
+  TileState: 0
   IsCantMoveTile: 0
   ParentTile: {fileID: 0}
   moveCost: 1
@@ -3188,6 +3231,7 @@ MonoBehaviour:
   y: 0
   G: 0
   H: 0
+  redMat: {fileID: 2100000, guid: 04acaaf13bcb6144499ef2fdb14ad993, type: 2}
 --- !u!1 &1798308489
 GameObject:
   m_ObjectHideFlags: 0
@@ -3307,6 +3351,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilePos: {x: 0, y: 0}
+  TileState: 0
   IsCantMoveTile: 0
   ParentTile: {fileID: 0}
   moveCost: 1
@@ -3314,6 +3359,7 @@ MonoBehaviour:
   y: 0
   G: 0
   H: 0
+  redMat: {fileID: 2100000, guid: 04acaaf13bcb6144499ef2fdb14ad993, type: 2}
 --- !u!1 &1813906803
 GameObject:
   m_ObjectHideFlags: 0
@@ -3433,6 +3479,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilePos: {x: 0, y: 0}
+  TileState: 0
   IsCantMoveTile: 0
   ParentTile: {fileID: 0}
   moveCost: 1
@@ -3440,6 +3487,7 @@ MonoBehaviour:
   y: 0
   G: 0
   H: 0
+  redMat: {fileID: 2100000, guid: 04acaaf13bcb6144499ef2fdb14ad993, type: 2}
 --- !u!1 &1846785784
 GameObject:
   m_ObjectHideFlags: 0
@@ -3559,6 +3607,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilePos: {x: 0, y: 0}
+  TileState: 0
   IsCantMoveTile: 0
   ParentTile: {fileID: 0}
   moveCost: 1
@@ -3566,6 +3615,7 @@ MonoBehaviour:
   y: 0
   G: 0
   H: 0
+  redMat: {fileID: 2100000, guid: 04acaaf13bcb6144499ef2fdb14ad993, type: 2}
 --- !u!1 &1971057416
 GameObject:
   m_ObjectHideFlags: 0
