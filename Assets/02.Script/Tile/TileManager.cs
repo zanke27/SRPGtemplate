@@ -13,7 +13,7 @@ using UnityEngine;
 // ClosedTileList: 거리 계산을 완료한 더이상 필요 없는 타일 리스트
 // completeTileList: 계산이 완료된 최단 경로 타일 리스트
 
-public class TileManager : MonoBehaviour
+public class TileManager : MonoSingleton<TileManager>
 {
 
     public List<Tile> completeTileList;
@@ -176,11 +176,10 @@ public class TileManager : MonoBehaviour
         }
     }
 
-    [ContextMenu("Test")]
-    public void Test()
+    public void MoveReady(int x, int y, int moveDistance)
     {
-        tileArr[2, 2].SelectTile();
-        GetMoveableTile(2, 2, 2);
+        tileArr[x, y].SelectTile();
+        GetMoveableTile(x, y, moveDistance);
     }
 
     public void SetTile()

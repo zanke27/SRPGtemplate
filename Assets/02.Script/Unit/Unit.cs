@@ -8,6 +8,10 @@ using UnityEngine;
 
 public class Unit : MonoBehaviour
 {
+    // 유닛의 현재 위치
+    [SerializeField]
+    private Vector2 unitPos;
+
     #region 데이터
 
     // 체력 / 공격 데미지 / 이동 거리
@@ -17,8 +21,14 @@ public class Unit : MonoBehaviour
 
     #endregion
 
-    public void Move()
+    private void Update()
     {
         
+    }
+
+    [ContextMenu("Move")]
+    public void Move()
+    {
+        TileManager.Instance.MoveReady((int)unitPos.x, (int)unitPos.y, moveDistance);
     }
 }
