@@ -24,6 +24,7 @@ public class TileManager : MonoSingleton<TileManager>
     private Tile[,] tileArr;
     private Tile startTile, endTile, currentTile;
     List<Tile> openTileList, closedTileList;
+    List<Tile> moveableTile = new List<Tile>();
 
     private void Start()
     {
@@ -71,6 +72,12 @@ public class TileManager : MonoSingleton<TileManager>
 
                 // 거꾸로 경로를 추가했으니까 반전 시켜주기
                 completeTileList.Reverse();
+
+                foreach(Tile tile in openTileList)
+                    tile.Reset();
+
+                foreach (Tile tile in closedTileList)
+                    tile.Reset();
 
                 // 끝내기
                 return;
@@ -169,6 +176,7 @@ public class TileManager : MonoSingleton<TileManager>
                             neighborTile.SelectTile();
 
                             openTileList.Add(neighborTile);
+                            moveableTile.Add(neighborTile);
                         }
                     }
                 }
@@ -176,9 +184,19 @@ public class TileManager : MonoSingleton<TileManager>
         }
     }
 
+    public void ReleaseMoveableTile()
+    {
+        foreach(Tile tile in moveableTile)
+            tile.ReleaseTile();
+        // 초기화 되겠지?
+        moveableTile.Clear();
+    }
+
     public void MoveReady(int x, int y, int moveDistance)
     {
-        tileArr[x, y].SelectTile();
+        Tile startTile = tileArr[x, y];
+        startTile.SelectTile();
+        moveableTile.Add(startTile);
         GetMoveableTile(x, y, moveDistance);
     }
 

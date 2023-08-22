@@ -14,17 +14,21 @@ public class Tile : MonoBehaviour
     [SerializeField] private Vector2 tilePos;
 
     public TileState TileState;
-    public bool IsCantMoveTile;
+    public bool IsCantMoveTile; // 이거 왜있지 -> 벽판정 하려고
     public Tile ParentTile;
     public int moveCost;
 
     public int x, y, G, H;
     public int F { get { return G + H; } }
 
-    public Material redMat;
+    public GameObject selectTile;
 
     // 움직일 수 있는 타일인가? (이동 범위 안쪽인가?)
-    private bool isSelectMove;
+    [SerializeField] private bool isSelectMove;
+    public bool IsSelectMove
+    {
+        get { return isSelectMove; }
+    }
 
     private void Awake()
     {
@@ -34,14 +38,20 @@ public class Tile : MonoBehaviour
 
     public void SelectTile()
     {
-        MeshRenderer meshRen = GetComponent<MeshRenderer>();
-        meshRen.material = redMat;
+        selectTile.SetActive(true);
         isSelectMove = true;
     }
 
     public void ReleaseTile()
     {
+        selectTile.SetActive(false);
         isSelectMove = false;
+    }
+
+    public void Reset()
+    {
+        G = 0;
+        H = 0;
     }
 
     [ContextMenu("SetPosition")]
