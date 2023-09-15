@@ -10,9 +10,18 @@ public enum EditMode
     Edit
 }
 
+public enum EditToolMode
+{
+    Paint,
+    Erase
+}
+
 public class ToolEditor : EditorWindow
 {
     public EditMode CurrentMode = EditMode.None;
+
+    public EditToolMode selectedEditToolMode = EditToolMode.Paint;
+    public GUIContent[] editToolModeContents;
 
     public Vector2Int cellCount;
     public Vector2 cellSize;
@@ -30,6 +39,12 @@ public class ToolEditor : EditorWindow
 
     private void OnEnable()
     {
+        editToolModeContents = new GUIContent[]
+        {
+            EditorGUIUtility.TrIconContent("Grid.PaintTool", "그리기 모드"),
+            EditorGUIUtility.TrIconContent("Grid.EraserTool", "지우기 모드")
+        };
+
         ChangeMode(EditMode.Create);
 
         SceneView.duringSceneGui -= OnSceneGUI;
@@ -64,8 +79,8 @@ public class ToolEditor : EditorWindow
         
         using (var scope = new GUILayout.VerticalScope(GUI.skin.window))
         {
-            //cellCount = EditorGUILayout.Vector2IntField("Cell 개수", cellCount);
-            //cellSize = EditorGUILayout.Vector2Field("Cell 크기", cellSize);
+            cellCount = EditorGUILayout.Vector2IntField("Cell 개수", cellCount);
+            cellSize = EditorGUILayout.Vector2Field("Cell 크기", cellSize);
         }
 
         GUI.enabled = isCraeteable;
@@ -80,11 +95,7 @@ public class ToolEditor : EditorWindow
 
     private CustomGrid BuildGrid(Vector2Int cellCount, Vector2 cellSize)
     {
-        var existings = FindObjectsOfType<CustomGrid>();
-
-        if (existings != null)
-            for (int i = 0;i < existings.Length; i++)
-                GameObject.DestroyImmediate(existings[i].gameObject);
+        ClearAll();
     
         var grid = new GameObject("Grid").AddComponent<CustomGrid>();
 
@@ -97,7 +108,37 @@ public class ToolEditor : EditorWindow
 
     private void DrawEditMode()
     {
+        GUILayout.BeginHorizontal(EditorStyles.toolbar);
+        {
+            if (GUILayout.Button("생성 모드", EditorStyles.toolbarButton))
+            {
+                ClearAll();
+                ChangeMode(EditMode.Create);
+            }
 
+            GUILayout.FlexibleSpace();
+
+            if (GUILayout.Button("불러오기", EditorStyles.toolbarButton))
+            {
+
+            }
+
+            if (GUILayout.Button("저장하기", EditorStyles.toolbarButton))
+            {
+
+            }
+        }
+        GUILayout.EndHorizontal();
+
+        EditorHelper.DrawCenterLabel(new GUIContent("편집 모드"), Color.red, 20, FontStyle.Normal);
+
+        GUILayout.BeginHorizontal();
+        {
+            GUILayout.FlexibleSpace();
+            selectedEditToolMode = (EditToolMode    )GUILayout.Toolbar((int)selectedEditToolMode, editToolModeContents, "LargeButton", GUILayout.Width(100), GUILayout.Height(40));
+            GUILayout.FlexibleSpace();
+        }
+        GUILayout.EndHorizontal();
     }
 
     private void ChangeMode(EditMode newMode)
@@ -118,5 +159,16 @@ public class ToolEditor : EditorWindow
                 CurrentMode = newMode;
             break;
         }
+    }
+
+    private void ClearAll()
+    {
+        var existings = FindObjectsOfType<CustomGrid>();
+
+        if (existings != null)
+            for (int i = 0; i < existings.Length; i++)
+                GameObject.DestroyImmediate(existings[i].gameObject);
+
+        targetGrid = null;
     }
 }

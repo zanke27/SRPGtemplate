@@ -25,13 +25,13 @@ public static class EditorHelper
 
     public static bool DrawCenterButton(string text, Vector2 size)
     {
-        bool clicked = false;
+        bool clicked;
 
         GUILayout.Space(5);
         GUILayout.BeginHorizontal();
         {
             GUILayout.FlexibleSpace();
-            GUILayout.Button(text, GUILayout.Width(size.x), GUILayout.Height(size.y));
+            clicked = GUILayout.Button(text, GUILayout.Width(size.x), GUILayout.Height(size.y));
             GUILayout.FlexibleSpace();
         }
         GUILayout.EndHorizontal();
