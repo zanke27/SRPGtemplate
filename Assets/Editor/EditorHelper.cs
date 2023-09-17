@@ -40,6 +40,56 @@ public static class EditorHelper
         return clicked;
     }
 
+    public static Vector2 DrawGridItems(Vector2 scrollPos, int gapSpace, int itemCnt, float areaWidth, Vector2 slotSize, System.Action<int> onDrawer)
+    {
+        scrollPos = GUILayout.BeginScrollView(scrollPos);
+        {
+            int horCnt = (int)(areaWidth / slotSize.x);
+            if (horCnt <= 0 )
+            {
+                horCnt = 1;
+            }
+
+            int verCnt = itemCnt / horCnt;
+            if (itemCnt % horCnt > 0)
+            {
+                verCnt++;
+            }
+
+            if (verCnt <= 0)
+            {
+                verCnt = 1;
+            }
+
+            GUILayout.BeginVertical();
+            {
+                for (int i = 0; i < verCnt; i++)
+                {
+                    GUILayout.BeginHorizontal();
+                    {
+                        for (int j = 0; j < horCnt; j++)
+                        {
+                            int idx = j + (i * horCnt);
+                            if (idx >= itemCnt)
+                            {
+                                break;
+                            }
+
+                            onDrawer(idx);
+
+                            GUILayout.Space(gapSpace);
+                        }
+                    }
+                    GUILayout.EndHorizontal();
+                }
+            }
+            GUILayout.EndVertical();
+        }
+        GUILayout.EndScrollView();
+
+        return scrollPos;
+    }
+
     public static void RayCast(Vector3 rayOriPos, Vector3 rayDestPos, out Vector3 hitPos)
     {
         Vector3 planePos01 = Vector3.forward;

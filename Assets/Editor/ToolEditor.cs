@@ -23,12 +23,15 @@ public class ToolEditor : EditorWindow
     public EditToolMode selectedEditToolMode = EditToolMode.Paint;
     public GUIContent[] editToolModeContents;
 
+    public CustomGridPalette targetPalette;
+    public CustomGridPaletteDrawer paletteDrawer = new CustomGridPaletteDrawer();
+
     public Vector2Int cellCount;
     public Vector2 cellSize;
 
     public CustomGrid targetGrid;
 
-    private bool isCraeteable => cellCount.x > 0 && cellCount.y > 0 && cellSize.x > 0 && cellSize.y > 0;
+    private bool isCraeteable => cellCount.x > 0 && cellCount.y > 0 && cellSize.x > 0 && cellSize.y > 0 && targetPalette != null;
 
     [MenuItem("Tool/Generate Map Tool")]
     static void Open()
@@ -81,6 +84,9 @@ public class ToolEditor : EditorWindow
         {
             cellCount = EditorGUILayout.Vector2IntField("Cell 개수", cellCount);
             cellSize = EditorGUILayout.Vector2Field("Cell 크기", cellSize);
+
+            targetPalette = (CustomGridPalette)EditorGUILayout.ObjectField("연결할 팔레트", targetPalette, typeof(CustomGridPalette));
+            paletteDrawer.TargetPalette = targetPalette;
         }
 
         GUI.enabled = isCraeteable;
@@ -139,6 +145,13 @@ public class ToolEditor : EditorWindow
             GUILayout.FlexibleSpace();
         }
         GUILayout.EndHorizontal();
+
+        var lastRect = GUILayoutUtility.GetLastRect();
+        var area = new Rect(0, lastRect.yMax, position.width, position.height - lastRect.yMax - 1);
+
+        GUI.Box(area, GUIContent.none, GUI.skin.window);
+
+        paletteDrawer.Draw(new Vector2(position.width, position.height)); 
     }
 
     private void ChangeMode(EditMode newMode)
