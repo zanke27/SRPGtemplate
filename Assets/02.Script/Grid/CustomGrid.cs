@@ -30,6 +30,20 @@ public class CustomGrid : MonoBehaviour
         return new Vector3(cellPos.x * config.CellSize.x + config.CellSize.x * 0.5f, 0, cellPos.y * config.CellSize.y + config.CellSize.y * 0.5f);
     }
 
+    public void RetreiveAll()
+    {
+        Items.Clear();
+
+        var mapObjs = FindObjectsOfType<MapObject>();
+        if(mapObjs != null)
+        {
+            for (int i = 0; i < mapObjs.Length; i++)
+            {
+                Items.Add(mapObjs[i].cellPos, mapObjs[i]);
+            }
+        }
+    }
+
     public void RefreshPoints()
     {
         int verLineCnt = config.CellCount.x * 2 + 2;

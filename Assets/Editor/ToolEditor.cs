@@ -51,12 +51,21 @@ public class ToolEditor : EditorWindow
 
         SceneView.duringSceneGui -= OnSceneGUI;
         SceneView.duringSceneGui += OnSceneGUI;
+
+        Undo.undoRedoPerformed -= OnUndoRedoPerformed;
+        Undo.undoRedoPerformed += OnUndoRedoPerformed;
+    }
+
+    private void OnUndoRedoPerformed()
+    {
+        targetGrid.RetreiveAll();
     }
 
     private void OnDisable()
     {
         ClearAll();
-        SceneView.duringSceneGui -= OnSceneGUI;
+        Undo.undoRedoPerformed -= OnUndoRedoPerformed;
+        SceneView.duringSceneGui -= OnSceneGUI; 
     }
 
     private void OnSceneGUI(SceneView obj)
@@ -98,11 +107,13 @@ public class ToolEditor : EditorWindow
 
         if (targetGrid.IsItemExist(cellPos))
         {
-            GameObject.DestroyImmediate(targetGrid.GetItem(cellPos).gameObject);
+            Undo.DestroyObjectImmediate(targetGrid.GetItem(cellPos).gameObject);
             targetGrid.RemoveItem(cellPos);
         }
 
         var target = targetGrid.AddItem(cellPos, selectedItem);
+
+        Undo.RegisterCreatedObjectUndo(target.gameObject, "Create MapObject!");
 
         Event.current.Use();
     }
@@ -111,7 +122,7 @@ public class ToolEditor : EditorWindow
     {
         if (targetGrid.IsItemExist(cellPos))
         {
-            GameObject.DestroyImmediate(targetGrid.GetItem(cellPos).gameObject);
+            Undo.DestroyObjectImmediate(targetGrid.GetItem(cellPos).gameObject);
             targetGrid.RemoveItem(cellPos);
         }
 
