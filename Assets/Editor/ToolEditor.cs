@@ -1,8 +1,7 @@
 using UnityEngine;
 using UnityEditor;
 using System;
-using PlasticPipe.PlasticProtocol.Messages;
-
+using System.IO;
 public enum EditMode
 { 
     None = 0,
@@ -54,18 +53,69 @@ public class ToolEditor : EditorWindow
         SceneView.duringSceneGui += OnSceneGUI;
     }
 
-    private void OnSceneGUI(SceneView obj)
-    {
-        //var mousePos = Event.current.mousePosition;
-        //var ray = HandleUtility.GUIPointToWorldRay(mousePos);
-
-        //EditorHelper.RayCast(ray.origin, ray.origin + ray.direction * 300, out var hitPos);
-        //Debug.Log(FindObjectOfType<CustomGrid>().GetCellPos(hitPos));
-    }
-
     private void OnDisable()
     {
+        ClearAll();
         SceneView.duringSceneGui -= OnSceneGUI;
+    }
+
+    private void OnSceneGUI(SceneView obj)
+    {
+        if (CurrentMode != EditMode.Edit)
+        {
+            return;
+        }
+
+        if (Event.current.button == 0 && Event.current.type == EventType.MouseDown)
+        {
+            var mousePos = Event.current.mousePosition;
+            var ray = HandleUtility.GUIPointToWorldRay(mousePos);
+            EditorHelper.RayCast(ray.origin, ray.origin + ray.direction * 300, out var hitPos);
+
+            var cellPos = targetGrid.GetCellPos(hitPos);
+
+            if (targetGrid.Contains(cellPos))
+            {
+                if (selectedEditToolMode == EditToolMode.Paint)
+                {
+                    Paint(cellPos);
+                }
+                else if (selectedEditToolMode == EditToolMode.Erase)
+                {
+                    Erase(cellPos);
+                }
+            }
+        }
+    }
+
+    private void Paint(Vector2Int cellPos)
+    {
+        var selectedItem = paletteDrawer.SelectedItem;
+        if (selectedItem == null)
+        {
+            return;
+        }
+
+        if (targetGrid.IsItemExist(cellPos))
+        {
+            GameObject.DestroyImmediate(targetGrid.GetItem(cellPos).gameObject);
+            targetGrid.RemoveItem(cellPos);
+        }
+
+        var target = targetGrid.AddItem(cellPos, selectedItem);
+
+        Event.current.Use();
+    }
+
+    private void Erase(Vector2Int cellPos)
+    {
+        if (targetGrid.IsItemExist(cellPos))
+        {
+            GameObject.DestroyImmediate(targetGrid.GetItem(cellPos).gameObject);
+            targetGrid.RemoveItem(cellPos);
+        }
+
+        Event.current.Use();
     }
 
     private void OnGUI()
@@ -126,12 +176,12 @@ public class ToolEditor : EditorWindow
 
             if (GUILayout.Button("불러오기", EditorStyles.toolbarButton))
             {
-
+                Load();
             }
 
             if (GUILayout.Button("저장하기", EditorStyles.toolbarButton))
             {
-
+                Save();
             }
         }
         GUILayout.EndHorizontal();
@@ -141,7 +191,7 @@ public class ToolEditor : EditorWindow
         GUILayout.BeginHorizontal();
         {
             GUILayout.FlexibleSpace();
-            selectedEditToolMode = (EditToolMode    )GUILayout.Toolbar((int)selectedEditToolMode, editToolModeContents, "LargeButton", GUILayout.Width(100), GUILayout.Height(40));
+            selectedEditToolMode = (EditToolMode)GUILayout.Toolbar((int)selectedEditToolMode, editToolModeContents, "LargeButton", GUILayout.Width(100), GUILayout.Height(40));
             GUILayout.FlexibleSpace();
         }
         GUILayout.EndHorizontal();
@@ -152,6 +202,35 @@ public class ToolEditor : EditorWindow
         GUI.Box(area, GUIContent.none, GUI.skin.window);
 
         paletteDrawer.Draw(new Vector2(position.width, position.height)); 
+    }
+
+    private void Save()
+    {
+        var path = EditorUtility.SaveFilePanel("맵 데이터 저장", Application.dataPath, "MapData.bin", "bin");
+
+        if (string.IsNullOrEmpty(path) == false)
+        {
+            byte[] data = targetGrid.Serialize();
+
+            File.WriteAllBytes(path, data);
+
+            ShowNotification(new GUIContent("저장 성공 !"), 3);
+        }
+    }
+
+    private void Load()
+    {
+        var path = EditorUtility.OpenFilePanel("맵 데이터 불러오기", Application.dataPath, "bin");
+
+        if (string.IsNullOrEmpty(path) == false)
+        {
+            var bytes = File.ReadAllBytes(path);
+
+            if (bytes != null)
+            {
+                targetGrid.Import(bytes, targetPalette);
+            }
+        }
     }
 
     private void ChangeMode(EditMode newMode)
@@ -168,6 +247,8 @@ public class ToolEditor : EditorWindow
                 CurrentMode = newMode;
             break;
             case EditMode.Edit:
+                // 탑뷰로 볼 수 있는 기능 있는지 확인해서 추가하기
+                //SceneView.lastActiveSceneView.in2DMode = true;
                 Debug.Log("Chage To Edit Mode!");
                 CurrentMode = newMode;
             break;
