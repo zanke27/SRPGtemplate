@@ -12,6 +12,10 @@ public enum TileState
 public class Tile : MonoBehaviour
 {
     [SerializeField] private Vector2 tilePos;
+    public Vector2 TilePos
+    { 
+        get { return tilePos; }
+    }
 
     public TileState TileState;
     public bool IsCantMoveTile; // 이거 왜있지 -> 벽판정 하려고
@@ -57,8 +61,8 @@ public class Tile : MonoBehaviour
     [ContextMenu("SetPosition")]
     public void SetPosition()
     {
-        tilePos.x = transform.position.x;
-        tilePos.y = transform.position.z;
+        tilePos.x = transform.position.x - 0.5f;
+        tilePos.y = transform.position.z - 0.5f; 
         x = (int)tilePos.x;
         y = (int)tilePos.y;
     }

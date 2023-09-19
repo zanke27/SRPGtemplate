@@ -30,7 +30,9 @@ public class ToolEditor : EditorWindow
 
     public CustomGrid targetGrid;
 
-    private bool isCraeteable => cellCount.x > 0 && cellCount.y > 0 && cellSize.x > 0 && cellSize.y > 0 && targetPalette != null;
+    private GameObject emptyTile;
+
+    private bool isCraeteable => cellCount.x > 0 && cellCount.y > 0 && cellSize.x > 0 && cellSize.y > 0 && targetPalette != null && emptyTile != null;
 
     [MenuItem("Tool/Generate Map Tool")]
     static void Open()
@@ -68,6 +70,11 @@ public class ToolEditor : EditorWindow
         SceneView.duringSceneGui -= OnSceneGUI; 
     }
 
+    private void Update()
+    {
+        SceneView.lastActiveSceneView.Repaint();
+    }
+
     private void OnSceneGUI(SceneView obj)
     {
         if (CurrentMode != EditMode.Edit)
@@ -75,13 +82,13 @@ public class ToolEditor : EditorWindow
             return;
         }
 
+        var mousePos = Event.current.mousePosition;
+        var ray = HandleUtility.GUIPointToWorldRay(mousePos);
+        EditorHelper.RayCast(ray.origin, ray.origin + ray.direction * 300, out var hitPos);
+        var cellPos = targetGrid.GetCellPos(hitPos);
+
         if (Event.current.button == 0 && Event.current.type == EventType.MouseDown)
         {
-            var mousePos = Event.current.mousePosition;
-            var ray = HandleUtility.GUIPointToWorldRay(mousePos);
-            EditorHelper.RayCast(ray.origin, ray.origin + ray.direction * 300, out var hitPos);
-
-            var cellPos = targetGrid.GetCellPos(hitPos);
 
             if (targetGrid.Contains(cellPos))
             {
@@ -95,6 +102,27 @@ public class ToolEditor : EditorWindow
                 }
             }
         }
+
+        Handles.BeginGUI();
+        {
+            GUI.Label(new Rect(mousePos.x, mousePos.y, 100, 50), cellPos.ToString(), EditorStyles.boldLabel);
+
+            if (targetGrid.IsItemExist(cellPos))
+            {
+                var item = targetPalette.GetItem(targetGrid.GetItem(cellPos).id);
+                var previewTex = AssetPreview.GetAssetPreview(item.targetObject);
+
+                var rtBox = new Rect(10, 10, previewTex.width + 10, previewTex.height + 10);
+                var rtTex = new Rect(15, 15, previewTex.width, previewTex.height);
+
+                GUI.Box(rtBox, GUIContent.none, GUI.skin.window);
+                GUI.DrawTexture(rtTex, previewTex);
+
+                var rtName = new Rect(rtBox.center.x - 10, rtBox.bottom - 25, 100, 10);
+                GUI.Label(rtName, item.name, EditorStyles.boldLabel);
+            }
+        }
+        Handles.EndGUI();
     }
 
     private void Paint(Vector2Int cellPos)
@@ -132,28 +160,46 @@ public class ToolEditor : EditorWindow
     private void OnGUI()
     {
         if (CurrentMode == EditMode.Create)
+        {
             DrawCreateMode();
+        }
         else
+        {
+            if (Event.current.keyCode == KeyCode.Q && Event.current.type == EventType.KeyDown)
+            {
+                this.selectedEditToolMode = EditToolMode.Paint;
+                Repaint();
+                Event.current.Use();
+            }
+            else if (Event.current.keyCode == KeyCode.E && Event.current.type == EventType.KeyDown)
+            {
+                this.selectedEditToolMode = EditToolMode.Erase;
+                Repaint();
+                Event.current.Use();
+            }
+
             DrawEditMode();
+        }
     }
 
     private void DrawCreateMode()
     {
-        EditorHelper.DrawCenterLabel(new GUIContent("크리에이트 모드"), Color.green, 20, FontStyle.Normal);
+        EditorHelper.DrawCenterLabel(new GUIContent("설정 모드"), Color.green, 20, FontStyle.Normal);
         
         using (var scope = new GUILayout.VerticalScope(GUI.skin.window))
         {
-            cellCount = EditorGUILayout.Vector2IntField("Cell 개수", cellCount);
-            cellSize = EditorGUILayout.Vector2Field("Cell 크기", cellSize);
+            cellCount = EditorGUILayout.Vector2IntField("Tile 개수", cellCount);
+            cellSize = EditorGUILayout.Vector2Field("Tile 크기", cellSize);
 
             targetPalette = (CustomGridPalette)EditorGUILayout.ObjectField("연결할 팔레트", targetPalette, typeof(CustomGridPalette));
             paletteDrawer.TargetPalette = targetPalette;
+
+            emptyTile = (GameObject)EditorGUILayout.ObjectField("빈 타일", emptyTile, typeof(GameObject));
         }
 
         GUI.enabled = isCraeteable;
         if (EditorHelper.DrawCenterButton("생성하기", new Vector2(100, 50)))
         {
-            // 현재 버튼을 눌러도 생성이 되지 않는 버그 발생, 이유 찾기
             targetGrid = BuildGrid(this.cellCount, this.cellSize);
             ChangeMode(EditMode.Edit);
         }
@@ -185,19 +231,27 @@ public class ToolEditor : EditorWindow
 
             GUILayout.FlexibleSpace();
 
-            if (GUILayout.Button("불러오기", EditorStyles.toolbarButton))
+            if (GUILayout.Button(" 맵 생성 ", EditorStyles.toolbarButton))
+            {
+                GenerateMap();
+            }
+
+            GUILayout.FlexibleSpace();
+
+            if (GUILayout.Button(" 불러오기 ", EditorStyles.toolbarButton))
             {
                 Load();
             }
 
-            if (GUILayout.Button("저장하기", EditorStyles.toolbarButton))
+            if (GUILayout.Button(" 저장하기 ", EditorStyles.toolbarButton))
             {
                 Save();
             }
+
         }
         GUILayout.EndHorizontal();
 
-        EditorHelper.DrawCenterLabel(new GUIContent("편집 모드"), Color.red, 20, FontStyle.Normal);
+        EditorHelper.DrawCenterLabel(new GUIContent("설치 모드"), Color.red, 20, FontStyle.Normal);
 
         GUILayout.BeginHorizontal();
         {
@@ -213,6 +267,41 @@ public class ToolEditor : EditorWindow
         GUI.Box(area, GUIContent.none, GUI.skin.window);
 
         paletteDrawer.Draw(new Vector2(position.width, position.height)); 
+    }
+
+    private void GenerateMap()
+    {
+        var grid = FindObjectOfType<CustomGrid>();
+
+        if (grid == null) return;
+
+        for (int x = 0; x < cellCount.x ; x++)
+        {
+            for (int y = 0; y < cellCount.y; y++)
+            {
+                if (targetGrid.IsItemExist(new Vector2Int(x, y)) == false)
+                {
+                    GameObject emptyTileObj = Instantiate(emptyTile, targetGrid.transform);
+                    emptyTileObj.transform.position = targetGrid.GetWorldPos(new Vector2Int(x, y));
+                }
+            }
+        }
+
+        GameObject tileMapObj = grid.gameObject;
+        tileMapObj.name = "TileMap";
+        DestroyImmediate(grid);
+        tileMapObj.AddComponent<TileManager>();
+
+        var tiles = tileMapObj.GetComponentsInChildren<Tile>();
+
+        foreach( var tile in tiles )
+        {
+            tile.SetPosition();
+            tile.SetName();
+        }
+
+        tileMapObj.GetComponent<TileManager>().ReOrder();
+
     }
 
     private void Save()

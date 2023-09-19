@@ -28,6 +28,8 @@ public class TileManager : MonoSingleton<TileManager>
 
     private void Start()
     {
+        arrX = arrY = (int)Mathf.Sqrt(transform.childCount);
+
         tileArr = new Tile[arrX + 1, arrY + 1];
         SetTile();
     }

@@ -30,8 +30,8 @@ public class RayCheck : MonoBehaviour
                 else if (selectTile != null && selectTile.IsSelectMove)
                 {
                     TileManager.Instance.AStar(
-                            GameManager.Instance.SelectUnit.UnitPosX,
-                            GameManager.Instance.SelectUnit.UnitPosY,
+                            (int)(GameManager.Instance.SelectUnit.UnitPosX - 0.5f),
+                            (int)(GameManager.Instance.SelectUnit.UnitPosY - 0.5f),
                             selectTile.x, selectTile.y);
                     GameManager.Instance.SelectUnit.Move();
                 }

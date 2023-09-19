@@ -11,9 +11,9 @@ using UnityEngine;
 public class Unit : MonoBehaviour
 {
     // 유닛의 현재 위치
-    private int unitPosX, unitPosY;
-    public int UnitPosX { get { return unitPosX; } }
-    public int UnitPosY { get { return unitPosY; } }
+    private float unitPosX, unitPosY;
+    public float UnitPosX { get { return unitPosX; } }
+    public float UnitPosY { get { return unitPosY; } }
 
     private bool moveing = false;
 
@@ -31,8 +31,8 @@ public class Unit : MonoBehaviour
 
     private void Awake()
     {
-        unitPosX = (int)transform.position.x;
-        unitPosY = (int)transform.position.z;
+        unitPosX = (transform.position.x);
+        unitPosY = (transform.position.z);
     }
 
     private void FixedUpdate()
@@ -47,8 +47,8 @@ public class Unit : MonoBehaviour
             {
                 moveing = false;
                 transform.position = new Vector3(nowTile.transform.position.x, transform.position.y, nowTile.transform.position.z);
-                unitPosX = (int)transform.position.x;
-                unitPosY = (int)transform.position.z;
+                unitPosX = transform.position.x;
+                unitPosY = transform.position.z;
             }
         }
     }
@@ -75,6 +75,6 @@ public class Unit : MonoBehaviour
 
     public void MoveReady()
     {
-        TileManager.Instance.MoveReady(unitPosX, unitPosY, moveDistance);
+        TileManager.Instance.MoveReady((int)(unitPosX - 0.5f), (int)(unitPosY - 0.5f), moveDistance); 
     }
 }

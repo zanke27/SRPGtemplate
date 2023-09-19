@@ -25,7 +25,7 @@ public class CustomGrid : MonoBehaviour
         return new Vector2Int(Mathf.FloorToInt(worldPos.x / config.CellSize.x), Mathf.FloorToInt(worldPos.z / config.CellSize.y));
     }
 
-    private Vector3 GetWorldPos(Vector2Int cellPos)
+    public Vector3 GetWorldPos(Vector2Int cellPos)
     {
         return new Vector3(cellPos.x * config.CellSize.x + config.CellSize.x * 0.5f, 0, cellPos.y * config.CellSize.y + config.CellSize.y * 0.5f);
     }
